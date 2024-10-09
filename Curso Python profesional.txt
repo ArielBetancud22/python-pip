@@ -1,0 +1,1292 @@
+Clase 02 Python en Entorno Profesional -> Parte 1 UTN
+Entorno profesional en Python => PIP y Entornos Virtuales
+Vamos a entrar en los diferentes enlaces -> leer la información e instalar
+
+Activar linux en window 10:
+https://www.neoguias.com/activar-terminal-linux-windows-10/
+
+Guia de instalación en windows: REVISAR
+https://learn.microsoft.com/es-mx/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+
+Introducción a wsl:
+Lectura:
+https://www.softzone.es/windows/como-se-hace/subsistema-windows-linux/
+
+Videos en YouTube
+https://www.youtube.com/playlist?list=PLn5IkU1ZhgiY97pZRRTXm5VIz9sYXxlsR
+
+Como instalar en windows desde YouTube: REVISAR
+https://youtu.be/_et7H0EQ8fY
+
+
+Clase 03 Python en Entorno Profesional -> Parte 2 UTN
+Clase 1 
+Comandos en linux
+pwd -> nos dice en que ubicación estamos de la maquina
+mkdir -> creamos una carpeta poniendo a continuación el nombre que le vamos a asignar
+ll -> podemos ver las carpetas que están en nuestra ubicación
+cd -> mas el nombre de la carpeta entramos en ella
+clear -> para limpiar la terminal
+git init -> iniciamos el proyecto con git en nuestro ordenador, si lo hacemos desde GitHub no hace falta
+touch -> creamos archivos poniendo a continuación el nombre y su extensión
+
+
+
+
+Clase 2, 3 y 4
+Comandos Utilizados
+
+python
+
+python3
+
+exit() para salir de la interfaz de python
+
+Instalación -> sudo es necesario cuando no estamos utilizando la terminal como administrador
+
+apt update
+
+Utilizamos sudo para super usuario, lo podemos necesitar o no
+sudo apt update
+
+sudo apt -y upgrade
+
+Verificar Instalación de python
+
+python3 -V #Vemos que versión de Python tenemos instalada
+
+Instalación de gestor de paquetes de dependencias
+sudo apt install -y python3-pip
+Verificar Instalación del gestor
+
+pip3 -V
+Dependencias en entorno profesional
+
+apt install -y build-essential libssl-dev libffi-dev python3-dev
+
+Problemas 1:
+Para quienes tienen inconvenientes al poner el comando "code .", 
+les recomiendo crear un alias esto en Ubuntu
+
+Pongan el siguiente comando:
+sudo nano ~/.bashrc
+
+Va a salir un editor de texto enorme, no se asusten, bajen hasta el fondo y pongan:
+alias code='/mnt/c/Users/[TU_USUARIO]/AppData/Local/Programs/"Microsoft VS Code"/Code.exe'
+
+aquí se trata de poner bien la ruta, al finalizar:
+Opriman Ctrl + O, enter y Ctrl + X Reinicien el WSL Listo, ya está
+
+Problemas 2:
+Para quienes tienen problema ejecutando 'code .' en la terminal reemplacen 
+el lugar donde se encuentra la ruta de instalación:
+export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"
+
+Asegúrense de reemplazar '/mnt/c/Program Files/Microsoft VS Code' con la ruta 
+correcta de instalación de VSCode de su sistema.
+
+Problemas 3:
+Ejecutar ubuntu como adminstrador
+entrar en la cartepa cd nombreCarpeta
+luego -> code .
+listo  ---FUNCIONA---
+
+
+
+Desde VSC crear un archivo hello.py y agregarle una línea de código
+print('Hola desde mi máquina')
+
+Ahora vamos a la terminal de Ubuntu y ejecutamos:
+python3 hello.py
+
+veremos la ejecución del código hecho
+no olvidar de guardar siempre los cambios en VSC
+
+
+
+
+
+Clase 5
+Crear repositorio en GITGUB -> UTN Clase 03 Python en Entorno Profesional -> Parte 2
+
+Comando para enlazar e inicializar
+
+ll
+
+git init #Esto para iniciar de manera local, NO ES NECESARIO DESDE GITHUB
+
+ll
+
+git remote add origin git@github.com:nombre_usuario/python-pip.git
+
+git remote -v
+
+git add *
+
+git commit -m "Mi primer archivo"
+
+git push origin master -> la rama se llama master si viene desde git bash, desde GitHub será main
+
+git Branch -M main #Para cambiar el nombre de la rama, esto se debe cambiar también desde GitHub
+
+Hasta aquí se pueden generar problemas para enlazar la cuenta de github
+lo que debemos hacer es lo siguiente:
+https://www.youtube.com/watch?v=YnSMYgIybFU
+
+comandos a agregar en la terminal mostrados en el video de YouTube: osea que para solucionar cualquier problema se resume en tener generada la clave ssh publica y privada, teniendo todo esto armado en nuestra configuración de GitHub, no deberiamos tener impedimentos.
+---SOLUCIONADO---
+
+
+
+
+
+
+
+Refrescar pagina y revisar -> UTN Clase 04 Python en Entorno Profesional -> Parte 3
+
+Crear el archivo gitignore, ir a la pagina -> gitignore.io
+este se genera poniendo:
+SO -> Windows
+SO -> Linux
+SO -> macOS
+Lenguaje -> Python
+Ponemos create, y copiamos todo el contenido del archivo
+venimos a VSC y creamos el archivo .gitignore
+dentro pegamos lo que copiamos, ctrl + s guardamos
+
+Ahora creamos el README.md solo colocamos #Steps
+ctrl + s guardamos y listo
+
+Después de tener los dos archivos .gitignore y README.md_ agregarlo 
+al gitgub:
+git add *    -> enter
+git commit -m "Aderimos los archivos a la main"    -> enter
+git push origin main    -> enter
+
+listo revisar en github, recargar con F5
+Ahora veremos que no cargo el .gitignore
+Ir a la terminal y poner:
+git status     -> enter
+
+veremos que el .gitignore esta allí
+por esto ponemos:
+git add .    -> enter
+git status   -> enter
+git commit -m "Add gitignore"     -> enter
+git push origin main       -> enter
+
+Revisar que estén los tres archivos cargados.
+
+
+
+
+Clase 6
+Flujo de trabajo en Python
+Comenzamos copiando el código de github, carpeta game, archivo main.py
+abrimos VSC creamos la carpeta game y dentro creamos el archivo main.py
+pegamos lo que copiamos desde github ctrl + s guardamos
+abrimos la terminal de ubuntu y entramos en la carpeta:
+cd game
+
+luego ejecutamos el juego con:
+python3 main.py
+
+jugamos ingresando piedra, papel o tijera
+
+al terminar volvemos a la carpeta de origen:
+cd ..
+
+commiteamos:
+git add .
+git commit -m "Guardando carpeta game y código python"
+
+nos vamos al README y modificamos:
+# Game Project
+
+Para correr el juego se deben seguir las instrucciones
+en terminal
+
+```sh
+cd game
+python3 main.py
+```
+
+ctrl + s guardamos y volvemos a commitear:
+git add .
+git commit -m "work in readme"
+git push origin main
+
+
+
+
+Clase 7
+¿Qué es pip?
+El ecosistema de python es muy interesante,
+¿Cuál es este ecosistema? Son las principales 
+librerías, frameworks que podemos usar para
+desarrollar y crear nuestros propios proyectos.
+Esto quiere decir que dentro de este ecosistema
+podemos utilizar grandes librerías ya creadas y
+no reinventar nada para tratar de solucionar ciertos
+problemas especificos.
+Todos estos paquetes los encontramos de manera
+publica en algo conocido como el gestor de paquetes
+de python o sus siglas pip, en el navegador buscamos:
+pypi
+
+entramos en pypi.org
+
+Aquí vamos a encontrar toda la familia de paquetes
+que tiene el entorno de Python (mostrar la pagina)
+
+En el buscador de la pagina -> matplotlib
+enter, nos va a mostrar la versión del paquete:
+entrar, veremos el comando de instalación y su 
+documentación.
+
+Veamos otra librería...
+en el buscador de la pagina -> numpy
+enter, veremos la versión y como hacer la 
+instalación, hallaremos también un poco de
+documentación.
+
+Aquí en pypi.org vamos a poder encontrar
+grandes librerías para nuestros proyectos.
+
+Veamos ahora como usarlo, lo vamos a instalar, vamos
+a la terminal, ya deberíamos tener con todas las instalaciones
+hechas el:
+
+pip3 -V
+
+enter, veremos la versión enlazado a la versión de python
+
+Ahora vamos a crear un nuevo proyecto...y empezamos
+a instalar paquetes
+ll + enter
+mkdir charts   -> esto de graficas, porque vamos a utilizar matplotlib
+para hacer la generación de graficas -> damos enter
+ll + enter -> vemos las carpetas
+cd charts + enter entramos en ella
+ll + enter -> todavía no tenemos ningun archivo
+clear + enter -> limpiamos pantalla
+
+python3 
+
+# Crear entorno virtual con el nombre venv
+python3 -m venv venv
+
+# Activar entorno virtual
+source venv/bin/activate
+
+# pip freeze para verificar que no ha nada instalado aún
+pip3 freeze
+
+# Instalar 
+Antes de instalar Pillow(se instala con matplotlib), 
+asegúrate de haber instalado las dependencias:
+
+$ sudo apt-get install python-dev python-setuptools
+$ sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+
+# pip freeze para verificar lo instalado solo en el entorno virtual
+pip3 freeze
+
+desde aquí vamos a instalar un paquete:
+pip3 install matplotlib + enter
+
+veremos que ya hizo la instalación y algo también
+interesante, es el árbol de dependencias que tiene 
+matplotlib
+Nos dice que esta dependencia usa otras dependencias, esto
+es muy interesante, porque una librería puede usar otras
+librerías, el ejemplo es que vemos que utiliza numpy, 
+porque matplotlib lo utiliza internamente.
+Para ver que librerías están instaladas utilizamos:
+pip3 freeze + enter
+
+Ahora vamos a ver el árbol de librerías que en este 
+momento estariamos usando, estas están dentro de nuestro
+entorno en python, es el entorno de python en general,
+de toda nuestra pc, no del proyecto en especifico, esto
+consultamos con el comando de pip3 freeze, seria algo
+global de nuestra maquina.
+Veremos matplotlib instalada de manera global, para este
+proyecto en especifico.
+Ahora vamos a empezar a utilizarla, vamos al código...
+
+Dentro de charts vamos a crear un archivo llamado:
+main.py
+
+y también vamos a crear un módulo llamado:
+charts.py
+
+en este vamos a empezar a utilizar esa dependencia:
+
+1 import matplotlib.pyplot as plt     # Comenzamos a utilizar esta dependencia y le asignamos un alias
+
+3 def generate_pie_chart():           # definimos una función para generar un pie chart
+4    labels = ['A', 'B', 'C']         # La etiqueta con sus nombres dentro de una lista
+5    values = [200, 34, 120]          # Estos son los valores también en una lista
+
+7    fig, ax = plt.subplots()         # generamos la grafica obteniendo la figura y las coordenadas desde matplotlib
+8    ax.pie(values, labels=labels)    # queremos generar los pie chart pasando los valores y nombres
+9    plt.safefig('pie.png')           # Aquí le decimos que queremos mostrar la grafica, con show() se detiene y no es lo que queremos
+                                        le decimos que genere la grafica y lo guarde en un archivo, le pasamos el nombre del archivo
+10   plt.close()                      # solo cerramos para terminar
+
+
+Ahora en el main.py como este es un módulo vamos a importar
+1 import charts
+
+2 def run():                          # esto es para ejecutar
+3     charts.generate_pie_charts()    # Llama a charts y llama a la función
+
+6 if __name__ == '__main__':          # Como queremos que esto funcione como un script
+7     run()                           # cuando se ejecute como un script le decimos que corra run
+
+
+ctrl + s -> guardamos
+
+Ahora vamos a ejecutar dentro de la terminal:
+pwd + enter -> vemos donde estamos ubicados
+ll + enter -> vemos todo lo que esta dentro
+python3 main.py
+
+Posible error -> ModuleNotFoundError: No 
+module named 'matplotlib.pylot' esto es
+módulo no encontrado.
+
+Ante este error:
+1 No instalamos el módulo (si lo hicimos)
+2 Fallamos en el código, escribiendo mal (error de tipeo)
+
+volvemos a digitar el comando para ejecutar:
+python3 main.py
+
+En una buena ejecución no debería mostrar nada
+ll + enter -> veremos que genero un archivo => pie.png
+
+Abrimos este archivo desde VSC y veremos una grafica
+
+Logramos utilizar todo el ecosistema de python a nuestro
+favor, es decir, podemos instalar todos los paquetes
+que vimos, y todas las librerías, usandolos de manera
+favorable, el ejemplo de hoy es una librería para
+crear estas graficas.
+
+
+
+
+
+
+Clase 8
+Gráficas en Python con pip -> UTN Clase 04 Python en Entorno Profesional -> Parte 4
+Descargar y pegar el archivo app dentro de root/
+py-proyect.
+Aquí lo que hacemos es leer un CSV y con base a este
+generamos gráficas utilizando matplotlib, ahora vamos a
+correr este proyecto en nuestro entorno local donde
+tenemos python instalado.
+
+Tenemos el archivo data.csv con la población mundial,
+y tenemos algunas utilidades y módulos que nos sirven
+para generar la gráfica.
+
+En el archivo main.py -> Lo que hace es leer un CSV,
+veamos el CSV (abrirlo) volvemos al main.py
+en la línea 6 leer lo comentado, el módulo es: read_csv.py
+lo abrimos -> este es el que lee todo el csv y lo transforma
+a un tipo diccionario. Volvemos al main.py
+Línea 7 hacemos un filtro, con la data del csv, filtramos 
+por la columna en el cuál el continente sea south america.
+
+Luego traemos todos los paises (línea 9) con la información,
+luego en la línea 10 sus porcentajes, para luego renderizar 
+un pie_chart
+
+Ahora veran que tenemos lo siguiente comentado, ¿por qué?
+veran que tenemos otro archivo llamado charts.py donde 
+utilizamos el show(), este lo que hace es detener el 
+programa, ahora vimos en la clase anterior que no necesitamos
+que se dentenga, utilizando -> 
+
+plt.savefig('pie.png')
+plt.close()
+
+Osea podemos guardalo en una imagen sin tener necesidad de
+que finalice el programa. Por esto vamos a cambiar esta parte 
+de código, copiando lo que les mostre de la clase anterior.
+Lo pegamos, le decimos que también lo queremos salvar o guardar,
+y le cambiamos el nombre a la imagen por ('bar.png')
+
+
+
+
+Ahora enla línea 13 hacemos lo mismo, pero la imagen se llamará:
+('pie.png') ctrl + s guardamos y listo.
+Ahora en el main.py sabemos que las dos cosas pueden correr
+en paralelo, así es que descomentamos el código que lo esta.
+Ya no nos toca detener el programa hasta este punto.
+
+Esto ahora debería correr sin ningun problema, la unica 
+dependencia que estamos utilizando es matplolib, esta ya la
+tenemos instalada, la importamos en el archivo charts.py
+
+Ahora vamos ejecutar para ver como funciona:
+
+Estando en el archivo -> py-project desde la terminal
+pwd + enter
+ahora ingresamos a la carpeta de app:
+cd app
+pwd
+ll
+Vemos todo lo que tenemos dentro de esta carpeta:
+Ahora lo corremos -> python3 main.py
+
+Comienzo de errores
+1 no se encuantra el directorio -> esto se soluciona en:
+main.py línea 6 : la ruta no es correcta, esta debe ser:
+
+data = read_csv.read_csv('data.csv') # esto es correcto
+
+vovlemos a ejecutar
+type Country => Peru
+
+El programa termino, esto quiere decir qwue genero dos
+gráficas
+ para ver esto ponemos en terminal:
+ll + enter
+
+Ahora en VSC revisamos abriendo las imagenes de la
+población de Peru.
+En la otra imagen tenemos todos los paises, vemos
+que el programa no se detiene y genera todo lo
+que se le solicita.
+
+Ahora vamos a hacer un ajuste más, este será que, 
+cada vez que generemos el bar_chart, en vez de que le
+nombre quede con el bar.png, quede con el nombre del pais
+que ingresamos en la consulta y genera la gráfica.
+
+Para esto abrimos el archivo de charts.py en la línea 3
+podemos recibir el nombre de la imagen con la que va a 
+quedar.
+
+def generate_bar_chart(name, labels, values):
+
+Ahora lo agregamos en la línea 6
+
+plt.savefig(f'./imgs/{name}.png')
+
+aquí le agregamos que las imagenes queden en una carpeta
+que la carpeta es imgs
+ctrl + s guardamos los cambios
+
+Ahora tenemos que mandarle el nombre al main.py línea 20
+
+charts.generate_bar_chart(country, labels, values)
+
+¿Crees que esto funcione? Veamos el resultado
+ejecutamos en terminal mientras no se olviden de
+guardar -> ctrl + s
+
+python3 main.py
+
+Type Country => Colombia
+
+Comienzo de errores
+2 la variable country recibe un diccionario, eso es lo 
+que muestra aquí, debemos especificar el elemento del
+diccionario para lograr pasar el nombre solo hacía la imagen
+final, osea su nombre + el .png
+
+Las soluciones, vamos al main.py y en la línea 13 vemos que
+recibe la variable un String, debajo vamos a imprimir esta 
+variable con ->
+
+print(country) -> línea 14
+
+Veamos que enviamos en la línea 16 a buscar ese país en el
+csv, con el if, si hay un resultado en la línea 19 estamos
+reemplazando, por lo que encontro en el csv y en este csv
+hay un diccionario, así es que estamos sobreescribiendo 
+esta variable, ahora vamos a agregar otro print
+
+print(country) -> línea 20
+
+sabemos que ya el contenido de la variable no es un 
+String, es un diccionario, al momento de enviarle
+el diccionario en la línea 21 es donde obtenemos la
+población de ese país y enla línea 22, volvemos
+a enviarlo, pero deberíamos enviar el nombre directo
+y no el diccionario, entonces le añadimos el nombre
+del país o la columna donde esta el nombre del país
+
+charts.generate_bar_chart(country['country'], labels, values)
+
+también podríamos no sobreescribir la variable de country
+usando lo que digito el usuario, es lo mismo.
+ctrl + s
+
+vamos a la terminal para ver los resultados:
+python3 mian.py
+
+Type Country => Bolivia
+
+vamos a ver los print que pusimos, pero tenemos este error:
+
+Comienzo de errores
+3 No encuentra un archivo o directorio, esto es que no
+creamos la carpeta de imgs
+
+Solución:
+ll -> vemos lo que tenemos hasta ahora
+mkdir imgs -> creamos la carpeta, recordar estar dentro de app
+ll -> vemos de nuevo que ya este la carpeta
+python3 main.py -> volvemos a ejecutar
+Type Country => Colombia
+termina el programa, ahora revisemos la carpeta de imgs
+ll imgs -> veremos la imagen de colombia
+vamos a generar otras imagenes:
+
+python3 main.py
+Type Country => Argentina
+ll imgs
+
+python3 main.py
+Type Country => Peru
+ll imgs
+
+python3 main.py
+Type Country => Bolivia
+ll imgs
+
+vamos a VSC entramos en la carpeta de imgs para revisar
+las imagenes.
+
+Con esto hemos visto el uso del archivo csv y como
+generamos imagenes desde la dependencia de matplotlib
+estas son herramientas excelente para este medio de 
+trabajo desde python.
+ commmiteamos
+Salir del entorno virtual de python con -> deactivate + enter
+
+luego revisamos que no se necesite hacer un pull
+
+git pull origin main
+ingresamos la contraseña: xxxxxx
+
+ahora a commitear:
+git status
+git add .
+git status
+git commit -m "bla bla bla"  + enter
+creamos un tag
+git tag -a v-01-03-csv -m "bla bla bla"   + enter
+
+ahora pusheamos
+git push origin main
+ingresamos contraseña: xxxxx
+
+revisamos y el tag no se cargo
+git push origin main --tags
+ingresamos contraseña: xxxxx
+listo terminamos el trabajo de hoy
+
+
+
+
+
+
+
+
+
+Clase 10 Python profesional -> parte 5
+¿Qué es un ambiente virtual?
+Hay un problema que quizás no lo tengas detectado es
+tener a Python en un ambiente global, por ejemplo:
+Ahora tenemos instalado Python en toda nuestra
+maquina y también todos lo módulos que vamos necesitando,
+se instalan en forma general, en nuestro caso el matplotlib,
+numpy, pandas, cada uno en cierta versión, todo esto 
+queda en este ambiente global, sería de una forma compartida
+para cualquier proyecto que se este ejecutando en nuestra
+maquina, un ejemplo son los proyectos que hemos estado
+trabajando de charts, app y game. (mostrar imagen)
+
+Aquí es donde veremos que estamos compartiendo los módulos,
+y toda la versión de Python, esto es lo que puede cuásar 
+muchos problemas, porque al tener diferentes proyectos, 
+que tienen que ver con diferentes servicios, diferentes 
+compañías, aquí es donde todo va a empezar a chocar, porque
+para cada proyecto vas a necesitar diferente versiones en 
+librerías y paquetes, esto desde Python hasta matplotlib,
+pandas, numpy y diferentes módulos. Todo esto va a generar
+errores, entonces para solucionar esto se crearon los 
+ambientes virtuales en Python, (mostrar imagen) estos 
+encapsulan cada uno de los módulos y lo atan a cada 
+proyecto, y no queda en una zona compartida, esto quiere 
+decir que cada proyecto puede tener sus propias 
+dependencias y en sus propias versiones sin que choquen 
+unas con otras y lo único que si seguiremos teniendo 
+compartida, es la versión de Python.
+
+Los entornos virtuales son una forma de crear un sistema 
+operativo virtual dentro de otro sistema operativo. Esto 
+permite a un usuario tener varios sistemas operativos 
+diferentes en un mismo equipo físico, lo que puede ser 
+muy útil en situaciones en las que es necesario utilizar 
+diferentes aplicaciones o tecnologías que requieren 
+entornos diferentes
+
+VEAMOS ESTO PUNTALMENTE
+1. Permiten utilizar varios sistemas operativos en 
+un mismo equipo físico
+2. Permiten instalar y utilizar diferentes aplicaciones y 
+tecnologías de manera segura, sin tener que hacer 
+cambios permanentes en el sistema operativo principal
+3. Pueden ser fácilmente movidos o copiados, lo que 
+significa que pueden ser utilizados en diferentes 
+equipos o compartidos con otros usuarios
+4. También pueden ser fácilmente respaldados y restaurados 
+en caso de que se produzca un problema, lo que puede 
+ayudar a prevenir la pérdida de datos o el tiempo de 
+inactividad
+5. Ofrecen una forma conveniente y segura de utilizar 
+diferentes aplicaciones y tecnologías en un mismo equipo
+
+-- En resumen, los entornos virtuales ofrecen una forma 
+conveniente y segura 🔒 de utilizar diferentes 
+aplicaciones y tecnologías en un mismo equipo, lo que 
+puede ser muy útil para muchos usuarios y situaciones 
+diferentes.
+
+En terminal vamos a hacer comprobaciones:
+pip3 freeze
+pip3 install matplotlib==3.5.0 #Esto será que va a desinstalar la versión que teníamos
+pip3 freeze  #Con esto lo comprobamos
+
+
+
+clase 10
+Usando entornos virtuales
+Verificar donde esta python y pip
+
+which python3
+
+which pip3
+
+Si estas en linus o wsl debes instalar
+
+sudo apt install -y python3-venv
+Poner cada proyecto en su propio ambiente, entrar en cada carpeta.
+
+python3 -m venv env
+Activar el ambiente
+
+source env/bin/activate
+Salir del ambiente virtual
+
+deactivate
+Podemos instalar las librerias necesarias en el ambiente virtual como por ejemplo
+
+pip3 install matplotlib==3.5.0
+Verificar las instalaciones
+
+pip3 freeze
+
+Tenemos ambientes virtuales que aislan los modulos de cada proyecto,
+manteniendolos independientes y que no chowquen sus dependencias entre si.
+Esto es muy importante para el flujo profesional en python.
+
+
+
+
+
+
+
+Clase 11
+Requirements.txt = Archivo que gestiona todas las dependencias y en que versiones se necesitan.
+
+Generar el archivo con el siguiente comando
+
+pip3 freeze > requirements.txt
+Revisar lo que hay dentro del archivo
+
+cat requirements.txt
+Instalar las dependencias necesarias para contribuir más rápido en proyectos
+
+pip3 install -r requirements.txt
+Preparar archivo para contribución
+
+# App Project
+```sh
+git clone
+cd app
+python3 -m venv env
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 main.py
+```
+
+Les tiro un 📝 Dato
+
+HTTPS y SSH son ambos protocolos de red utilizados en Internet para proteger la información que se transmite a través de la red
+
+--
+
+HTTPS es el protocolo de seguridad de capa de aplicación más utilizado en la Web, protege la información que se intercambia entre el usuario y la web
+
+Por ejemplo
+cuando inicias sesión en un sitio web, envías tu nombre de usuario y contraseña a través de HTTPS para asegurar que nadie más pueda ver esa información
+
+--
+
+Mientras que SSH es un protocolo de red que se utiliza principalmente para conectarse a servidores y ejecutar comandos en el de forma segura
+
+Por ejemplo
+si necesitas acceder a un servidor de forma remota para administrarlo, puedes usar SSH para establecer una conexión segura y ejecutar comandos en el servidor
+
+-- 
+
+
+
+
+
+
+Clase 12
+Solicitudes HTTP con Requests
+podemos buscar una dirección para trabajar con una API:
+https://api.escuelajs.co/api/v1/categories
+
+Esta dirección podemos pegarla directamente en el navegador,
+veremos que es un arreglo con muchos elementos, o una lista
+y dentro de ella tenemos diccionarios.
+
+Ahora desde la terminal vamos a crear una nueva carpeta
+o directorio: mkdir web-server
+ll para ver todos los archivos, si estamos en un entorno
+virtual de Python, para saber en donde estamos, utilizamos:
+which python3   enter
+Nos muestra donde estamos situados.
+
+Ponemos deactivate y ya desactivamos el entorno virtual.
+
+Entramos al directorio de web-server con: cd web-server
+
+Creamos un entorno para este proyecto:
+python3 -m venv env     -> enter
+luego : ll
+
+Activamos el entorno virtual:
+source env/bin/activate    -> enter
+
+Ahora instalamos la dependencia necesaria:
+pip3 install requests     -> enter
+
+revisamos:
+pip3 freeze
+
+Creamos el archivo requeriments, para que cualquiera pueda 
+hacer este proyecto con las dependencias que estamos utilizando
+aquí:
+pip freeze > requeriments.txt      -> enter
+
+Para saber si todo se escribio correctamente:
+cat requeriments.txt        -> enter
+
+
+Abrimos VSC con: codev .
+
+Creamos el archivo store.py y dentro colocamos el siguiente,
+Código:
+
+import requests
+
+def get_categories():
+    r = requests.get('https://api.escuelajs.co/api/v1/categories')
+    print(r.status_code)
+    print(r.text)
+    print(type(r.text))
+    categories = r.json()
+    for category in categories:
+        print(category['name']
+
+Creamos otro archivo llamado main.py y colocamos:
+
+import store
+
+def run():
+    store.get_categories()
+
+if __name__ == '__main__':
+    run()
+
+
+Ejecutamos desde la terminal: python3 main.py
+
+luego vamos a subir todo a github:
+git status
+git add .
+git status
+git commit -m "Trabajando con la dependencia de requests y API"
+git status
+git log --oneline --all --graph --decorate
+git tag -a v0-01-07-requests -m "También agregamos el trabajo con API"
+Salir del entorno virtual de python con -> deactivate + enter
+git push origin master
+git push --tag origin master
+
+git log --oneline --all --graph --decorate
+git checkout ramaAri
+git merge master
+git push origin ramaAri
+
+
+
+
+
+Clase 13
+Pandas
+Es una de las librerias mas utilizadas en python y 
+nos sirven para analizar y manipular datos de archivos duros.
+
+Entramos en la terminal:
+cd python-pip
+cd app
+
+Iniciamos el entorno virtual
+source env/bin/activate
+which python3       -> revisamos que este bien el entorno virtual
+revisamos el archivo de requeriments.txt con el comando:
+cat requirements.txt
+
+Vamos a instalar panda con:
+pip3 install pandas
+pip3 freeze
+
+Ahora actualizamos el archivo requirements
+pip3 freeze > requirements.txt
+
+revisamos si ya esta actualizado:
+cat requirements.txt
+
+Una vez que ya esta hecho, debemos abrir VSC
+code .
+
+abrimos el main.py y modificamos con pandas
+
+luego probamos en la terminal:
+lo corremos como un script: python3  main.py
+
+ y hacemos el commit
+
+
+
+
+
+
+Clase 14
+Web server con FastAPI
+Con python podemos construir nuestro propio servidor web.
+
+La librería que vamos a utilizar para lograr nuestro propio
+servidor web, se llama FastAPI, buscar info en su pagina.
+
+Ahora vamos anuestro proyecto:
+cd Documentos
+cd propy
+cd web-server
+
+Activamos el entorno virtual:
+source env/bin/activate
+pip3 install fastapi
+pip3 install "uvicorn[standard]"
+pip3 freeze
+pip3 freeze > requirements.txt
+cat requirements.txt
+
+Ahora vamos a abrir en VSC:
+cd ..
+code .
+esto desde propy
+vamos a main.py y comenzamos a integrar el servidor web desde 
+aquí.
+Modificamos, esta comentado en el código:
+corremos desde la terminal pero ahora no como un script,
+pues necesitamos un servidor que se escuche en un puerto especifico.
+
+uvicorn main:app --reload   -> uvicorn más la aplicación esta en el archivo main y el nombre de la aplicación es app
+por último le colocamos una bandera o opción, esto significa que si hacemos cualquier cambio, se estará actualizando
+con cada uno de esos cambios.
+
+Abrimos en el navegador la dirección que nos muestra: localhost:8000
+Deberíamos ver la lista, pero también podemos ir a: localhost:8000/contact
+deberíamos ver el nombre que colocamos en el diccionario, esto si esta
+bien tipeado, utilizando comillas.
+
+Ahora fastapi tiene una forma para devolver html, para construir paginas dinamicas: ver en la pagina
+Custom Response-HTML, Stream, File, Others
+
+HTML Response: leer
+Modificar en el código.
+ver en el navegador.
+Commitear los cambios...
+Hemos logrado crear nuestro propio servidor web, y también 
+hemos logrado utilizar el ecosistema de python a nuestro favor.
+Tenemos python corriendo en nuestra maquina con una 
+configuración profesional.
+
+ctrl + c   -> detenemos el servidor
+
+
+
+
+
+Clase 15
+¿Qué es Docker?
+
+Instalación de Docker
+Según el sistema operativo que utilices puede variar la instalación, 
+así que a continuación te daré las indicaciones base para la 
+instalación según tu sistema operativo:
+
+Instalación en Windows con WSL (Recomendada) 🐧
+Debes descargar el instalador desde la página de Docker for Windows.
+
+Cuando ya tienes instalado Docker Desktop dentro de tus programas 
+debes abrirlo y debes asegurarte que la opción “Use the WSL 2 based 
+engine” está habilitada:
+
+Imagen 1
+
+Luego en la sección “Resources > WSL Integration”, asegurarate que 
+la opcion “Enable integration with my default WSL distro”, este 
+habilitada:
+
+Imagen 2
+
+
+Instalación en Windows 🪟
+Debes descargar el instalador desde la página de Docker for Windows.
+
+Cuando ya tienes instalado Docker Desktop dentro de tus programas, 
+una de las cosas que debes tener en cuenta en la instalación con 
+Windows es que debes contar con Windows 10 de 64 Bits o superior 
+y debes habilitar el Hyper-V de Windows.
+
+Si quieres conocer los detalles, aquí te dejo el detalle como 
+habilitar Hyper-V desde la Interfaz de Windows
+
+
+Instalación en Ubuntu 🐧
+Estos son los pasos para instalarlo dentro de Ubuntu, sin embargo, 
+también puedes ver directamente Install Docker Engine on Ubuntu.
+
+se debe ir a la pagina de docker, develops, manuals, instalación 
+linux, ubuntu
+
+En Install Docker Desktop on Ubuntu
+descargamos el DEB package
+
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo docker run hello-world
+Para otras distribuciones de Linux:
+
+Install Docker Engine on CentOS
+Install Docker Engine on Debian
+Install Docker Engine on Fedora
+
+
+
+
+
+Clase 16 
+Instalación
+
+
+
+
+
+Clase 17
+Dockerizando scripts de python
+Vamos a dockerizar dos aplicaciones, una que solo corre scripts
+y otra donde necesitamos el serv idor web encendido y respondiendo
+peticiones.
+
+Primero vamos a la de los scripts con app:
+cd Documentos
+cd nombre_directorio
+code .
+
+en el directorio de app, abrimos un nuevo archivo:
+Dockerfile
+Vamos ahora a correr la instrucción FROM, AQUÍ
+es donde le vamos a decir a docker de que versión de python
+vamos acorrer este contenedor.
+
+FROM python: 3.10.12
+
+Como ya tenemos el contenedor, ahora vamos a crear una 
+carpeta dentro de este contenedor, normalmente esta carpeta
+se llama:
+
+#Este seria el espacio de trabajo
+
+WORKDIR /app
+
+luego una buena practica es copiar el archivo de las 
+dependencias y lo vamos a pasar al entorno en el cual
+estamos trabajando.
+
+COPY requirements.txt /app/requirements.txt
+
+el de la izquierda es el local y el de la derecha
+es el del contenedor.
+Ahora dejamos listo para la instalación de las 
+dependencias.
+
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+Ahora volvemos a copiar pero ahora todos los archivos.
+
+COPY . /app
+
+Para correr esto deberemos crear un nuevo archivo,
+llamado:
+
+docker-compose.yml
+
+Este archivo va a declarar como se va a inciar, y donde
+se incia el contenedor, lo primero que se hace es definir 
+una etiqueta llamada: services
+
+services:
+	app.csv:
+		build:
+			contexto: .
+			dockerfile: Dockerfile
+			
+			
+Ahora en el Dockerfile colocamos una línea más para
+que el contenedor corra continuamente:
+CMD bash -c "while true; do sleep 1; done"
+
+Guardar con ctrl + s
+
+Ejecutar con el comendo desde la terminal:
+Antes se debe abrir el docker desktop para
+que se encienda el contenedor.
+
+docker-compose build
+
+sudo docker compose build
+
+docker-compose build: Este comando se utiliza para construir las imágenes
+de los servicios especificados en el archivo "docker-compose.yml". Esto
+significa que tomará las especificaciones de construcción de cada
+servicio, como el Dockerfile y los contextos, y creará una imagen nueva y
+actualizada.
+
+docker-compose ps: Este comando se utiliza para ver el estado de los
+servicios especificados en el archivo "docker-compose.yml". Muestra si los
+servicios están corriendo o detenidos, y también muestra el nombre del
+contenedor, el puerto y la imagen utilizada.
+
+docker-compose down: Este comando se utiliza para detener y eliminar los
+contenedores, redes y volúmenes creados por "docker-compose up".
+
+docker-compose up -d: Este comando se utiliza para iniciar los servicios
+especificados en el archivo "docker-compose.yml" en segundo plano. El
+parámetro "-d" indica que se ejecutará en segundo plano.
+
+docker-compose ps: Es el mismo comando que el segundo, pero se repite para
+mostrar el estado de los servicios después de haber sido iniciados.
+
+docker-compose exec app-csv bash: Este comando se utiliza para ejecutar una
+terminal dentro del contenedor especificado, en este caso "app-csv", y
+conectarse a él mediante una sesión interactiva de bash. Esto permite
+realizar tareas dentro del contenedor, como verificar los archivos o
+ejecutar comandos.
+
+Lo que hice en el README lo presento aquí:
+# Avanzamos en pandas
+
+```sh
+cd nombre_directorio
+source env/bin/activate
+which puthon3
+cat requirements.txt
+pip3 install pandas
+pip3 freeze
+pip3 freeze > requirements.txt
+cat requirements.txt
+code .
+```
+# Docker
+<br><strong>
+Aquí vamos a ver la instalación y ejecución de un script de Python,
+a través de Docker, todo desde la terminal en Ubuntu:
+HAY QUE DESCARGAR EL package DEB
+Instalamos primero Engine en ubuntu,
+luego el docker desktop y también el compose
+</strong></br>
+
+```sh
+sudo apt-get update
+sudo apt-get install \ca-certificates \curl \gnupg \lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo docker run hello-world
+```
+
+<br><strong>
+Ahora vamos a ver como ejecutar Docker desde la terminal, hay dos maneras para trabajar con Docker, una es ejecutar script y la otra es trabajar con servidor, ahora vamos a trabajar con un programa simple sin servidor, este es un script para ejecutar como cualquier software.
+</strong></br>
+
+```sh
+DockerFile
+docker-compose.yml
+python3 -V
+docker desktop Engine running
+docker compose build
+docker compose ps
+docker compose up -d
+docker compose exec app-csv bash
+ls -l
+python main.py
+Chile
+exit
+docker compose down
+```
+
+<br>
+1. Creamos el archivo Dockerfile dentro del directorio app
+</br>
+<br>
+2. Creamos el archivo docker-compose.yml dentro del directorio app
+</br>
+<br>
+3. Colocamos el código que encontramos dentro de los archivos comentado, esto es explicada cada línea.
+</br>
+<br>
+4. Revisar la versión de python para colocar bien el dato dentro den archivo Dockerfile
+</br>
+<br>
+5. Warning: Se debe encender el Docker Desktop y dejarlo en el estado de Engine Runnig</br>
+<br>
+6. Usamos en terminal el comando docker compose build esto carga todas las dependecias y se hace una copia, docker-compose es parte de la versión 1, pero aquí utilizamos la versión 2, donde no utilizamos el guión medio.
+</br>
+<br>
+7. Usamos en terminal docker compose ps para ver la actividad del conteiner
+</br>
+<br>
+8. Iniciamos el servicio del contenedor a través del archivo docker-compose.yml en segundo plano con el comando docker compose up -d, el parámetro -d indica que se ejecuta en segundo plano.
+</br>
+<br>
+9. Ejecutamos el contenedor con docker compose exec app-csv bash
+</br>
+<br>
+10. El comando ls -l nos muestra como están perfectamente copiados todos los archivos y todo funciona perfecto
+</br>
+<br>
+11. Ejecutamos el programa tal cuál lo haciamos antes pero ahora solo con python main.py sin el número 3, se ejecuta el programa con todas sus dependencias, funciona excelente desde docker.
+</br>
+<br>
+12. Utilizamos docker compose down para bajar el contenedor y exit para salir de su ejecución.
+</br>
+
+
+
+
+
+Clase 18
+Docker para el día a día: Automatizando la vinculación de archivos
+
+Arrancamos el contenedor con los siguientes comandos:
+docker compose up -d
+docker compose exec app-csv bash
+ls -l
+cat charts.py  #Vemos el código del archivo
+
+Vamos a VSC para cambiar el nombre del archivo en la línea 13,
+será chart_pie.png
+ctrl +s #Guardamos y vamos de nuevo a la terminal
+
+Ahora si volovemos a cargar el: cat charts.py
+vemos que no se actualizó el código del archivo,
+¿Por qué? Esto es porque el sistema de archivos con el que estamos trabajando y el del contenedor no están elazados, para hacer el enlace, vamos a salir con:
+exit
+docker compose build
+
+El volver a ser el docker compose build es dañino para el tiempo de programación, no es bueno, esto se llama: estar dañando el tiempo de desarrollo.
+
+Por esto aquí comenzamos a enlazar todos los archivos:
+entramos en el docker-compose.yml
+
+6 	volumes:
+7 	  - .:/app
+8 #Le decimos que este proyecto con todo lo que tiene, este enlazado directamente con los : dos puntos, hacía la carpeta app que es la que esta dentro del contenedor (app) eso es todo lo que hay que hacer.
+
+
+
+
+
+
+Clase 19 
+Dockerizando web services
+Ahora vamos a avanzar en dockerizar nuestro servidor, esto lo vamos
+a hacer con una tecnica bastante legendaria que es copy and paste.
+
+Clonamos o copiamos el Dockerfile que tenemos en app, y lo pegamos
+en web-server.
+También hacemos esto con el archivo de docker-compose.yml
+
+Ahora dentro del Dockerfile vamos a cambiar la línea 10,
+en vez de dejarlo encendido para poder ejecutar los scripts,
+vamos a lanzar el servidor de uvicorn que es el que mantiene
+prendido el servidor, sobre todo el web-server en fase API.
+
+Este es otro modo de escribir el comando y es a través de darle
+una lista ["uvocorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+
+Ahora en el docker-compose.yml cambiamos nombre de la aplicación app-csv por web-server y
+luego vamos a hacer enlace de los puertos, así como hicimos un enlace de 
+los archivos con el - .:/app en donde nuestra maquina se conecta al sistema de archivos
+del contenedor, también existe lo mismo para los puertos:
+ports:
+  - '80:80'
+
+utilizamos el puerto 80 y hacemos un enlace con el puerto del contenedor, que
+seria también el 80.
+
+Ahora vaos a construir este contenedor y veremos como funciona:
+
+en la terminal ingresamos a 
+cd web-server
+ll
+docker compose build      -> para construirlo
+docker compose up -d      -> arrancamos el contenedor
+docker compose ps         -> vemos la actividad
+
+vamos al navegador, colocamos:
+localhost     -> vemos la lista
+localhost/contact     -> veremos nuestro sitio.
