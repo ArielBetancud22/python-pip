@@ -221,17 +221,17 @@ git push origin main
 
 Clase 7
 ¿Qué es pip?
-El ecosistema de python es muy interesante,
+El ecosistema de Python es muy interesante,
 ¿Cuál es este ecosistema? Son las principales 
 librerías, frameworks que podemos usar para
 desarrollar y crear nuestros propios proyectos.
 Esto quiere decir que dentro de este ecosistema
 podemos utilizar grandes librerías ya creadas y
 no reinventar nada para tratar de solucionar ciertos
-problemas especificos.
+problemas específicos.
 Todos estos paquetes los encontramos de manera
 publica en algo conocido como el gestor de paquetes
-de python o sus siglas pip, en el navegador buscamos:
+de Python o sus siglas pip, en el navegador buscamos:
 pypi
 
 entramos en pypi.org
@@ -259,7 +259,7 @@ hechas el:
 
 pip3 -V
 
-enter, veremos la versión enlazado a la versión de python
+enter, veremos la versión enlazado a la versión de Python
 
 Ahora vamos a crear un nuevo proyecto...y empezamos
 a instalar paquetes
@@ -268,7 +268,7 @@ mkdir charts   -> esto de graficas, porque vamos a utilizar matplotlib
 para hacer la generación de graficas -> damos enter
 ll + enter -> vemos las carpetas
 cd charts + enter entramos en ella
-ll + enter -> todavía no tenemos ningun archivo
+ll + enter -> todavía no tenemos ningún archivo
 clear + enter -> limpiamos pantalla
 
 python3 
@@ -369,9 +369,9 @@ ll + enter -> veremos que genero un archivo => pie.png
 
 Abrimos este archivo desde VSC y veremos una grafica
 
-Logramos utilizar todo el ecosistema de python a nuestro
+Logramos utilizar todo el ecosistema de Python a nuestro
 favor, es decir, podemos instalar todos los paquetes
-que vimos, y todas las librerías, usandolos de manera
+que vimos, y todas las librerías, usándolos de manera
 favorable, el ejemplo de hoy es una librería para
 crear estas graficas.
 
@@ -568,14 +568,14 @@ las imagenes.
 Con esto hemos visto el uso del archivo csv y como
 generamos imagenes desde la dependencia de matplotlib
 estas son herramientas excelente para este medio de 
-trabajo desde python.
+trabajo desde Python.
  commmiteamos
-Salir del entorno virtual de python con -> deactivate + enter
+Salir del entorno virtual de Python con -> deactivate + enter
 
 luego revisamos que no se necesite hacer un pull
 
 git pull origin main
-ingresamos la contraseña: xxxxxx
+ingresamos la contraseña: accessToken
 
 ahora a commitear:
 git status
@@ -587,11 +587,11 @@ git tag -a v-01-03-csv -m "bla bla bla"   + enter
 
 ahora pusheamos
 git push origin main
-ingresamos contraseña: xxxxx
+ingresamos contraseña: accessToken
 
 revisamos y el tag no se cargo
 git push origin main --tags
-ingresamos contraseña: xxxxx
+ingresamos contraseña: accessToken
 listo terminamos el trabajo de hoy
 
 
@@ -671,34 +671,60 @@ pip3 freeze  #Con esto lo comprobamos
 
 clase 10
 Usando entornos virtuales
+Lo primero que vamos a verificar en donde se esta ejecutando Python
 Verificar donde esta python y pip
 
-which python3
+which python3  # Nos va a dar la ruta donde esta el binario donde se esta ejecutando
 
-which pip3
+which pip3     #Es lo mismo nos muestra el binario global de donde sale
 
-Si estas en linus o wsl debes instalar
+Si estas en linux o wsl debes instalar un paquete de mas
 
-sudo apt install -y python3-venv
-Poner cada proyecto en su propio ambiente, entrar en cada carpeta.
+sudo apt install -y python3-venv  #Instalamos
+Poner cada proyecto en su propio ambiente, entrar en cada carpeta, para
+crear el entorno virtual de cada uno, entramos en carpeta por carpeta:
 
-python3 -m venv env
-Activar el ambiente
+cd app
+pwd
+python3 -m venv env  #Estamos creando el entorno virtual para app
+source env/bin/actívate  #Activar el ambiente o entorno virtual
+deactivate   #Salir del ambiente virtual
 
-source env/bin/activate
-Salir del ambiente virtual
+Volvemos a activar el entorno virtual de app:
 
-deactivate
-Podemos instalar las librerias necesarias en el ambiente virtual como por ejemplo
+source env/bin/actívate  #Activar el ambiente o entorno virtual
+which python3  #Veremos que cambia y apunta directamente al entorno virtual que hemos creado
+which pip3     #Pasa lo mismo
+pip3 freeze    #Veremos que ahora no tiene nada instalado y es porque ahora tenemos el 
+               ambiente aislado, ósea en esta ambiente no se a instalado ningún módulo,
+               ahora necesitamos paquetes que solo estemos necesitando en este proyecto,
+               en este programa estábamos trabajando con matplotlib, ahora todo se debe
+               instalar con el entorno virtual activado.
+pip3 install matplotlib  #hacemos la instalación normal
+pip3 freeze              #veremos las instalaciones y como se trae otras dependencias,
+                         esto es porque necesita de otras más para poder funcionar, por 
+                         ejemplo numpy, pillow que es para la manipulación de imágenes,
+                         ahora todas las dependencias están aisladas, solo están para 
+                         este proyecto.
 
-pip3 install matplotlib==3.5.0
-Verificar las instalaciones
+Ahora vamos a otro proyecto para crear su entorno virtual y instalar un matplotlib
+diferente, ósea otra versión, esto será bueno ya porque ningún proyecto va a
+chocar, cada cuál tendrá su ambiente con sus versiones propias para su funcionamiento.
 
-pip3 freeze
+deactivate   #Salir del ambiente virtual
+pip3 freeze  #Veremos todo lo instalado en el ordenador de manera global
+cd ..
+ll
+cd game
+python3 -m venv env  #Estamos creando el entorno virtual para app
+ll
+source env/bin/activate  #Activar el ambiente o entorno virtual
+pip3 install matplotlib==3.5.0  #Instalamos una versión diferente
+pip3 freeze       #verificamos la versión instalada
 
-Tenemos ambientes virtuales que aislan los modulos de cada proyecto,
-manteniendolos independientes y que no chowquen sus dependencias entre si.
-Esto es muy importante para el flujo profesional en python.
+Tenemos ambientes virtuales que aíslan los módulos de cada proyecto,
+manteniéndolos independientes y que no choquen sus dependencias entre si.
+Esto es muy importante para el flujo profesional en Python.
 
 
 
