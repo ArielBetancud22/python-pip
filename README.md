@@ -35,4 +35,5 @@ https://github.com/ArielBetancud22/python-pip/wiki/Clase-1
     git pull origin main
     Usuario: ArielBetancud22
     password: accessToken #El que hemos creado y debemos guardar bien
+    git config --global credential.helper store #Este comando es para guardar el token, pero habrá que ingrearlo una vez y desde allí lo recordará.
 ```
