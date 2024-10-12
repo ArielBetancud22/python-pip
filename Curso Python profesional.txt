@@ -716,7 +716,7 @@ pip3 freeze  #Veremos todo lo instalado en el ordenador de manera global
 cd ..
 ll
 cd game
-python3 -m venv env  #Estamos creando el entorno virtual para app
+python3 -m venv env  #Estamos creando el entorno virtual para game
 ll
 source env/bin/activate  #Activar el ambiente o entorno virtual
 pip3 install matplotlib==3.5.0  #Instalamos una versión diferente
