@@ -732,28 +732,61 @@ Esto es muy importante para el flujo profesional en Python.
 
 
 
-Clase 11
+Clase 11 Python profesional -> parte 6
 Requirements.txt = Archivo que gestiona todas las dependencias y en que versiones se necesitan.
+Hay una forma muy optima de mantener las dependencias y módulos
+que utiliza un proyecto en especifico.
+Este archivo es uno que gestiona todas las dependencias y en
+que versiones necesita estas dependencias. Ahora en vez de
+instalarlo manualmente con el comando pip, esto sería como
+una automatización de instalar cada una de estas 
+dependencias en una versión especifica, este archivo lo
+conocemos como requirements.txt y ahora vamos a ver como
+funciona. Vamos a la terminal:
 
-Generar el archivo con el siguiente comando
+ll
+cd app
+ll
+source env/bin/activate  #Activamos el entorno virtual
+pip3 freeze  #Revisamos las dependencias instaladas
 
-pip3 freeze > requirements.txt
-Revisar lo que hay dentro del archivo
+¿Qué pasa si una nueva persona participa del proyecto y tiene que instalar las mismas dependencias?
+¿Cómo hacer para instalar las mismas versiones?
+Mirando a través de pip3 freeze, sería un arduo trabajo tener que instalar
+cada dependencia en las diferentes versiones que estamos utilizando y además
+es que nosotros mismo deberíamos pasarle estas versiones, este proceso
+manual podemos automatizarlo.
+¿Cómo lo haremos?
+Todo el comando pip3 freeze lo vamos a pasar a un archivo txt y este archivo
+txt le va a servir al pip para instalar esas versiones que se necesitan para
+el proyecto.
 
-cat requirements.txt
-Instalar las dependencias necesarias para contribuir más rápido en proyectos
+Para generar el archivo lo hacemos con el siguiente comando:
 
-pip3 install -r requirements.txt
+pip3 freeze > requirements.txt  # El símbolo de > este en la terminal, no significa
+un operador de comparación, si no que en la terminal significa, llevar el output de
+ese comando como input de otro, en este caso queremos que lance ese output en un
+nuevo archivo, y el archivo se llama: requirements.txt
+
+
+ll
+cat requirements.txt  #Revisar lo que hay dentro del archivo, ahora no hay que instalar dependencia por dependencia
+pip3 install -r requirements.txt  #Instalar las dependencias necesarias para contribuir más rápido en proyectos
+
+Ahora hay que agregar la documentación de como alguien podría contribuir en este
+proyecto, esto lo hacemos en el README.md
+¿Qué comandos deberíamos utilizar entonces para contribuir en un proyecto?
 Preparar archivo para contribución
 
 # App Project
 ```sh
-git clone
+git clone https://...  #Se puede utilizar el ssh, https:// o fork donde podemos hacer pull requests
 cd app
-python3 -m venv env
-source env/bin/activate
-pip3 install -r requirements.txt
-python3 main.py
+python3 -m venv env  #Se debe crear el entorno siempre porque no se comparte en GitHub
+source env/bin/activate  #Activar en Linux
+venv/Scripts/activate  #Activar en window
+pip3 install -r requirements.txt  #Instalar dependencias -r significa reutilizar
+python3 main.py  #Ejecutar
 ```
 
 Les tiro un 📝 Dato
@@ -782,9 +815,20 @@ si necesitas acceder a un servidor de forma remota para administrarlo, puedes us
 
 
 Clase 12
+UNa de las librerías mas utilizadas en Python se llama: Requests
+Lo que hace es hacer peticiones a otro tipo de servidores web
+desde Python.
+Ahora veremos otro proyecto para empezar a utilizar esta dependencia.
+Entonces desde Python podemos conectarnos a otros servidores web
+y hacer peticiones.
+
+Podemos buscar la documentación de requests y también buscar la
+API que queramos utilizar en este proyecto, lo dejo a tu criterio.
+
 Solicitudes HTTP con Requests
 podemos buscar una dirección para trabajar con una API:
 https://api.escuelajs.co/api/v1/categories
+https://dog.ceo/api/breeds/list/all
 
 Esta dirección podemos pegarla directamente en el navegador,
 veremos que es un arreglo con muchos elementos, o una lista
@@ -834,10 +878,10 @@ def get_categories():
     r = requests.get('https://api.escuelajs.co/api/v1/categories')
     print(r.status_code)
     print(r.text)
-    print(type(r.text))
-    categories = r.json()
-    for category in categories:
-        print(category['name']
+    print(type(r.text))  #Vemos de que tipo es el texto, puede ser un string
+    categories = r.json()  #Para transformalo a Python en una lista
+    for category in categories:  #Ahora podemos hacer iteraciones
+        print(category['name']   #Solo imprimimos la categoria
 
 Creamos otro archivo llamado main.py y colocamos:
 
@@ -846,11 +890,14 @@ import store
 def run():
     store.get_categories()
 
-if __name__ == '__main__':
+if __name__ == '__main__': #Como lo vamos a correr como un script va a ejecutar run()
     run()
 
 
 Ejecutamos desde la terminal: python3 main.py
+
+Desde ahora hemos estado trabajando con un servicio externo utilizando el
+ecosistema de Python.
 
 luego vamos a subir todo a github:
 git status
