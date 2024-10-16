@@ -920,12 +920,14 @@ git push origin ramaAri
 
 
 
-Clase 13
+Clase 13: Clase 12 Python profesional -> parte 7
 Pandas
-Es una de las librerias mas utilizadas en python y 
+Es una de las librerías mas utilizadas en Python y 
 nos sirven para analizar y manipular datos de archivos duros.
 
-Entramos en la terminal:
+Entramos en la terminal en mi caso uso wsl, abro l terminal de Ubuntu
+como administrador, luego ingreso los siguientes comandos:
+cd py-project
 cd python-pip
 cd app
 
@@ -939,7 +941,8 @@ Vamos a instalar panda con:
 pip3 install pandas
 pip3 freeze
 
-Ahora actualizamos el archivo requirements
+Ahora actualizamos el archivo requirements, queda claro que con el
+mismo comando se crea el requirements y se actualiza
 pip3 freeze > requirements.txt
 
 revisamos si ya esta actualizado:
